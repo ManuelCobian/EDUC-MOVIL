@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "596068621768",
+    "firebase_url": "https://educmovil-f1f98.firebaseio.com",
+    "project_id": "educmovil-f1f98",
+    "storage_bucket": "educmovil-f1f98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596068621768:android:4116dce055439c08",
+        "android_client_info": {
+          "package_name": "com.example.luis.educmovil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "596068621768-r8tfbeihfijmvf2v4ofji59483hhg188.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWcewhYECGEGDqjqHPY4fjp4qGf0dOzwc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
