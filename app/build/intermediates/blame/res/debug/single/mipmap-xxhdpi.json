@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "C:\\Users\\EDUC\\AndroidStudioProjects\\educMovil\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_educverde.png",
+        "source": "C:\\Users\\EDUC\\AndroidStudioProjects\\educMovil\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_educverde.png"
+    },
+    {
+        "merged": "C:\\Users\\EDUC\\AndroidStudioProjects\\educMovil\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_launcher.png",
+        "source": "C:\\Users\\EDUC\\AndroidStudioProjects\\educMovil\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\EDUC\\AndroidStudioProjects\\educMovil\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\ic_educ.png",
+        "source": "C:\\Users\\EDUC\\AndroidStudioProjects\\educMovil\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_educ.png"
+    },
+    {
+        "merged": "C:\\Users\\EDUC\\AndroidStudioProjects\\educMovil\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi\\educicon.png",
+        "source": "C:\\Users\\EDUC\\AndroidStudioProjects\\educMovil\\app\\src\\main\\res\\mipmap-xxhdpi\\educicon.png"
+    }
+]

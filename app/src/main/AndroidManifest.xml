@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.luis.educmovil">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -7,7 +8,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/educ"
-        android:label="educ"
+        android:label="Educ"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service android:name=".FirebaseMessagingService">
@@ -28,10 +29,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Links" />
+        <activity android:name=".MaterialStudio" />
         <activity
-            android:name=".ver"
-            android:label="@string/title_activity_ver"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".MainActivity"
+            android:label="Educ"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Home"
+            android:label="Educ" />
+        <activity
+            android:name=".Anuncios"
+            android:label="Mis anuncios" />
+        <activity
+            android:name=".VerAnuncios"
+            android:label="Mi anuncio"
+             ></activity>
     </application>
 
 </manifest>

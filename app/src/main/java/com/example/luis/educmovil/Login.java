@@ -1,11 +1,14 @@
 package com.example.luis.educmovil;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -24,13 +27,16 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import peticiones.Anuncios;
+
 public class Login extends AppCompatActivity implements View.OnClickListener {
 private Button boton;
     private EditText name,email;
-private RequestQueue requestQueue;
-    private static final String url="192.168.0.6:8080/fcm/control.php";
+    private RequestQueue requestQueue;
+    private static final String URL = "http://148.213.20.45:88/push/get_login.php";
     private StringRequest request;
-
+    private Session session;
+    String login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +45,18 @@ private RequestQueue requestQueue;
         boton=(Button)findViewById(R.id.button);
         name=(EditText)findViewById(R.id.editText);
         email=(EditText)findViewById(R.id.editText2);
+        FirebaseMessaging.getInstance().subscribeToTopic("test");
+
+        session = new Session(this);
 
         boton.setOnClickListener(this);
         requestQueue= Volley.newRequestQueue(this);
-        FirebaseMessaging.getInstance().subscribeToTopic("test");
-        FirebaseInstanceId.getInstance().getToken();
+
+
+        if(session.loggedin()){
+            startActivity(new Intent(Login.this,MainActivity.class));
+            finish();
+        }
     }
 
     @Override
@@ -51,8 +64,17 @@ private RequestQueue requestQueue;
         switch (v.getId()){
 
            case R.id.button:
-                    final String nombre=name.getText().toString();
+               final String nombre=name.getText().toString();
                final String correo=email.getText().toString();
+
+               //MANDO EL CORREO Y EL PASSS PARA ENVIARSELO A LA CLASE HTTPHEADLER
+               //para enviar
+               SharedPreferences preferencias=getSharedPreferences("datos", Context.MODE_PRIVATE);
+               SharedPreferences.Editor editor=preferencias.edit();
+               editor.putString("mail", name.getText().toString());
+               editor.putString("pass",email.getText().toString());
+               editor.commit();
+
                String bandera="false";
 
                if(nombre.length()==0  ){
@@ -69,14 +91,68 @@ else {
                bandera="verdadero";
            }
                if(bandera=="false"){
-                   Toast.makeText(getApplicationContext(),"Ingrese Datos",Toast.LENGTH_SHORT).show();
+                   Toast.makeText(getApplicationContext(),"Para ingresar se requiere que usted escriba su correo electrónico y su contraseña",Toast.LENGTH_SHORT).show();
                }
 
 
                if(bandera=="verdadero"){
-                   Intent intent = new Intent(this,ver.class);
+                   final String token = FirebaseInstanceId.getInstance().getToken();
+                   final Intent intent = new Intent(this,MainActivity.class);
+
+                    intent.putExtra("pass",correo);
                    intent.putExtra("DATO",nombre);
-                   startActivity(intent);
+
+                   request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                       @Override
+                       public void onResponse(String response) {
+                           try {
+                               JSONObject jsonObject = new JSONObject(response);
+                               if(jsonObject.names().get(0).equals("clientes")){
+
+                                   session.setLoggedin(true);
+
+
+
+
+                                   startActivity(intent);
+
+                                   finish();
+                               }
+
+                               else {
+                                   Toast.makeText(getApplicationContext(), "Los datos que proporcionó no son correctos, por favor verifique y vuelva a intentar" , Toast.LENGTH_SHORT).show();
+
+                                   login="no";
+                               }
+
+                           } catch (JSONException e) {
+                               e.printStackTrace();
+                           }
+
+
+
+                       }
+                   }, new Response.ErrorListener() {
+                       @Override
+                       public void onErrorResponse(VolleyError error) {
+
+                       }
+                   }){
+                       @Override
+                       protected Map<String, String> getParams() throws AuthFailureError {
+                           HashMap<String,String> hashMap = new HashMap<String, String>();
+                           hashMap.put("email",nombre);
+                           hashMap.put("password",correo);
+                           hashMap.put("token",token);
+                           return hashMap;
+                       }
+                   };
+
+                   requestQueue.add(request);
+
+                   //aqui traer datos
+
+
                }
                break;
         }

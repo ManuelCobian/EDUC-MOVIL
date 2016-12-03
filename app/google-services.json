@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "596068621768",
-    "firebase_url": "https://educmovil-f1f98.firebaseio.com",
-    "project_id": "educmovil-f1f98",
-    "storage_bucket": "educmovil-f1f98.appspot.com"
+    "project_number": "253204638516",
+    "firebase_url": "https://prueba-7b21d.firebaseio.com",
+    "project_id": "prueba-7b21d",
+    "storage_bucket": "prueba-7b21d.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:596068621768:android:4116dce055439c08",
+        "mobilesdk_app_id": "1:253204638516:android:4116dce055439c08",
         "android_client_info": {
           "package_name": "com.example.luis.educmovil"
         }
       },
       "oauth_client": [
         {
-          "client_id": "596068621768-r8tfbeihfijmvf2v4ofji59483hhg188.apps.googleusercontent.com",
+          "client_id": "253204638516-elfokbur4blt6aq8fm91f0pfvsp7f1mj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBWcewhYECGEGDqjqHPY4fjp4qGf0dOzwc"
+          "current_key": "AIzaSyCqflHg3lFdu8jPkysdvLtN4Ugl2IJAn3o"
         }
       ],
       "services": {
